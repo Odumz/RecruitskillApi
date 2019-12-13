@@ -12,7 +12,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->version();
+    return $router->app->version();
 });
 
 $router->group(['prefix' => 'api/v1'], function($router)
