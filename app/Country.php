@@ -14,7 +14,7 @@ class Country extends Model
      * @var array
      */
 
-    protected $table = 'countries';
+    protected $table = 'country';
 
     protected $fillable = [
         'countries',
