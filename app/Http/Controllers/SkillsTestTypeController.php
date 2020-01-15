@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class SkillsTestTypeController extends Controller
 {
-    public function showAllTestTypes()
+    public function showAllSkillsTestTypes()
     {
         return response()->json(SkillsTestType::all());
     }
 
-    public function showOneTestType($id)
+    public function showOneSkillsTestType($id)
     {
         return response()->json(SkillsTestType::find($id));
     }
