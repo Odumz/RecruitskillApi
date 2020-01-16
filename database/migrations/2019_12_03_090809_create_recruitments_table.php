@@ -28,6 +28,7 @@ class CreateRecruitmentsTable extends Migration
             $table->string('position');
             $table->string('renumeration');
             $table->string('job_category');
+            $table->string('data_type');
             $table->timestamps();
         });
     }

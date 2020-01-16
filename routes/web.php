@@ -229,6 +229,39 @@ $router->group(['prefix' => 'api/v1'], function($router)
 
         $router->put('positions/{id}', ['uses' => 'PositionsController@update']);
 
+        // OngoingRecruitment
+        $router->get('ongoing-recruitment',  ['uses' => 'OngoingRecruitmentController@showAllOngoingRecruitments']);
+
+        $router->get('ongoing-recruitment/{id}', ['uses' => 'OngoingRecruitmentController@showOneOngoingRecruitment']);
+
+        $router->post('ongoing-recruitment', ['uses' => 'OngoingRecruitmentController@create']);
+
+        $router->delete('ongoing-recruitment/{id}', ['uses' => 'OngoingRecruitmentController@delete']);
+
+        $router->put('ongoing-recruitment/{id}', ['uses' => 'OngoingRecruitmentController@update']);
+
+        // ConcludedRecruitment
+        $router->get('concluded-recruitment',  ['uses' => 'ConcludedRecruitmentController@showAllConcludedRecruitments']);
+
+        $router->get('concluded-recruitment/{id}', ['uses' => 'ConcludedRecruitmentController@showOneConcludedRecruitment']);
+
+        $router->post('concluded-recruitment', ['uses' => 'ConcludedRecruitmentController@create']);
+
+        $router->delete('concluded-recruitment/{id}', ['uses' => 'ConcludedRecruitmentController@delete']);
+
+        $router->put('concluded-recruitment/{id}', ['uses' => 'ConcludedRecruitmentController@update']);
+
+        // PublishedRecruitment
+        $router->get('published-recruitment',  ['uses' => 'PublishedRecruitmentController@showAllPublishedRecruitments']);
+
+        $router->get('published-recruitment/{id}', ['uses' => 'PublishedRecruitmentController@showOnePublishedRecruitment']);
+
+        $router->post('published-recruitment', ['uses' => 'PublishedRecruitmentController@create']);
+
+        $router->delete('published-recruitment/{id}', ['uses' => 'PublishedRecruitmentController@delete']);
+
+        $router->put('published-recruitment/{id}', ['uses' => 'PublishedRecruitmentController@update']);
+
         // Notifications Recipient
         $router->get('notifications_recipient',  ['uses' => 'NotificationsRecipientController@showAllNotificationsRecipients']);
 
