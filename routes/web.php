@@ -251,6 +251,39 @@ $router->group(['prefix' => 'api/v1'], function($router)
 
         $router->put('concluded-recruitment/{id}', ['uses' => 'ConcludedRecruitmentController@update']);
 
+        // UpcomingInterview
+        $router->get('upcoming-interview',  ['uses' => 'UpcomingInterviewController@showAllUpcomingInterviews']);
+
+        $router->get('upcoming-interview/{id}', ['uses' => 'UpcomingInterviewController@showOneUpcomingInterview']);
+
+        $router->post('upcoming-interview', ['uses' => 'UpcomingInterviewController@create']);
+
+        $router->delete('upcoming-interview/{id}', ['uses' => 'UpcomingInterviewController@delete']);
+
+        $router->put('upcoming-interview/{id}', ['uses' => 'UpcomingInterviewController@update']);
+
+        // ShortlistedCandidate
+        $router->get('shortlisted-candidate',  ['uses' => 'ShortlistedCandidateController@showAllShortlistedCandidates']);
+
+        $router->get('shortlisted-candidate/{id}', ['uses' => 'ShortlistedCandidateController@showOneShortlistedCandidate']);
+
+        $router->post('shortlisted-candidate', ['uses' => 'ShortlistedCandidateController@create']);
+
+        $router->delete('shortlisted-candidate/{id}', ['uses' => 'ShortlistedCandidateController@delete']);
+
+        $router->put('shortlisted-candidate/{id}', ['uses' => 'ShortlistedCandidateController@update']);
+
+        // OnboardedCandidate
+        $router->get('onboarded-candidate',  ['uses' => 'OnboardedCandidateController@showAllOnboardedCandidates']);
+
+        $router->get('onboarded-candidate/{id}', ['uses' => 'OnboardedCandidateController@showOneOnboardedCandidate']);
+
+        $router->post('onboarded-candidate', ['uses' => 'OnboardedCandidateController@create']);
+
+        $router->delete('onboarded-candidate/{id}', ['uses' => 'OnboardedCandidateController@delete']);
+
+        $router->put('onboarded-candidate/{id}', ['uses' => 'OnboardedCandidateController@update']);
+
         // PublishedRecruitment
         $router->get('published-recruitment',  ['uses' => 'PublishedRecruitmentController@showAllPublishedRecruitments']);
 
