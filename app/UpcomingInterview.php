@@ -14,7 +14,7 @@ class UpcomingInterview extends Model
      * @var array
      */
 
-    protected $table = 'upcoming-interview';
+    protected $table = 'upcoming_interview';
 
     protected $fillable = [
         'recruitment_id', 'time', 'date', 'location'

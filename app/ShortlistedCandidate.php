@@ -14,7 +14,7 @@ class ShortlistedCandidate extends Model
      * @var array
      */
 
-    protected $table = 'shortlisted-candidate';
+    protected $table = 'shortlisted_candidate';
 
     protected $fillable = [
         'recruitment_id', 'user_id', 'skill_id'
