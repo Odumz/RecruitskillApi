@@ -14,7 +14,7 @@ class OnboardedCandidate extends Model
      * @var array
      */
 
-    protected $table = 'onboarded-candidate';
+    protected $table = 'onboarded_candidate';
 
     protected $fillable = [
         'recruitment_id', 'user_id', 'skills'
