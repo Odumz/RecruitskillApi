@@ -48,5 +48,12 @@ class UsersController extends Controller
 
     	return response()->json($user);
 
-	}
+    }
+
+    public function showAllUserProfilesFromUser($users_id)
+    {
+        $user = User::find($users_id);
+        $userprofile = $user->userprofile;
+        return response()->json($userprofile, 200);
+    }
 }

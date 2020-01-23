@@ -38,4 +38,11 @@ class JobTitleController extends Controller
         JobTitle::findOrFail($id)->delete();
         return response('Deleted Successfully', 200);
     }
+
+    public function showAllSkillsFromJobTitle($job_title_id)
+    {
+        $job_title = JobTitle::find($job_title_id);
+        $skills = $job_title->skills;
+        return response()->json($skills, 200);
+    }
 }

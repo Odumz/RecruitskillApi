@@ -26,4 +26,9 @@ class Skills extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function jobTitle()
+    {
+        return $this->belongsToMany(JobTitle::class, 'job_title_id');
+    }
 }

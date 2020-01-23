@@ -26,4 +26,9 @@ class Industry extends Model
      * @var array
      */
     protected $hidden = [];
+
+    // public function jobTitle()
+    // {
+    //     return $this->hasMany(JobTitle::class);
+    // }
 }

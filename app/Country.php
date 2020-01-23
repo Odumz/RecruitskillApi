@@ -26,4 +26,10 @@ class Country extends Model
      * @var array
      */
     protected $hidden = [];
+    
+    public function states()
+    {
+        return $this->hasMany(State::class);
+    }
+
 }

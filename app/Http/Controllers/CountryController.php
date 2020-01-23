@@ -37,4 +37,12 @@ class CountryController extends Controller
         Country::findOrFail($id)->delete();
         return response('Deleted Successfully', 200);
     }
+
+    public function showAllStatesFromCountry($country_id)
+    {
+        $country = Country::find($country_id);
+        $states = $country->states;
+        return response()->json($states, 200);
+    }
+
 }

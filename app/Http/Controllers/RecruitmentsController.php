@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Recruitments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class RecruitmentsController extends Controller
 {
@@ -19,6 +20,7 @@ class RecruitmentsController extends Controller
 
     public function create(Request $request)
     {
+        Log::info('Showing user profile for user: '.$request);
         $recruitments = Recruitments::create($request->all());
 
         return response()->json($recruitments, 201);
@@ -37,4 +39,6 @@ class RecruitmentsController extends Controller
         Recruitments::findOrFail($id)->delete();
         return response('Deleted Successfully', 200);
     }
+
+    
 }

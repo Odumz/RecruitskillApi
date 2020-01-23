@@ -37,4 +37,11 @@ class StateController extends Controller
         State::findOrFail($id)->delete();
         return response('Deleted Successfully', 200);
     }
+
+    public function showAllCitiesFromState($state_id)
+    {
+        $state = State::find($state_id);
+        $cities = $state->cities;
+        return response()->json($cities, 200);
+    }
 }

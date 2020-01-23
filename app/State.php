@@ -26,4 +26,14 @@ class State extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }

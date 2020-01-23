@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\UsersController;
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
@@ -38,6 +40,7 @@ $router->group(['prefix' => 'api/v1'], function($router)
 
             $router->delete('delete/{id}','UsersController@delete');
             $router->get('index','UsersController@index');
+            $router->get('/view/{users_id}/profile', 'UsersController@showAllUserProfilesFromUser');
         });
 
     $router->group(['prefix' => 'recruit'], function($router)
@@ -185,6 +188,8 @@ $router->group(['prefix' => 'api/v1'], function($router)
 
         $router->put('state/{id}', ['uses' => 'StateController@update']);
 
+        $router->get('/state/{state_id}/cities', ['uses' => 'StateController@showAllCitiesFromState']);
+
         // Country
         $router->get('country',  ['uses' => 'CountryController@showAllCountries']);
 
@@ -195,6 +200,8 @@ $router->group(['prefix' => 'api/v1'], function($router)
         $router->delete('country/{id}', ['uses' => 'CountryController@delete']);
 
         $router->put('country/{id}', ['uses' => 'CountryController@update']);
+
+        $router->get('/country/{country_id}/states', ['uses' => 'CountryController@showAllStatesFromCountry']);
 
         // City
         $router->get('city',  ['uses' => 'CityController@showAllCities']);

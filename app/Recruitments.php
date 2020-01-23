@@ -26,4 +26,6 @@ class Recruitments extends Model
      * @var array
      */
     protected $hidden = [];
+
+    
 }

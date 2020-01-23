@@ -26,4 +26,14 @@ class JobTitle extends Model
      * @var array
      */
     protected $hidden = [];
+
+    // public function industry()
+    // {
+    //     return $this->belongsTo(Industry::class);
+    // }
+
+    public function skills()
+    {
+        return $this->hasMany(Skills::class);
+    }
 }
