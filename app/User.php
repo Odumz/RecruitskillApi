@@ -7,10 +7,11 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
-    use Authenticatable, Authorizable;
+    use HasApiTokens, Authenticatable, Authorizable;
 
     /**
      * The attributes that are mass assignable.
@@ -35,5 +36,40 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function userprofile()
     {
         return $this->hasOne(UsersProfile::class, 'users_id');
+    }
+
+    public function invite()
+    {
+        return $this->hasMany(Invites::class);
+    }
+
+    public function notification()
+    {
+        return $this->hasMany(Notifications::class, 'creators_id');
+    }
+
+    public function onboardedCandidate()
+    {
+        return $this->hasOne(OnboardedCandidate::class);
+    }
+
+    public function shortlistedCandidate()
+    {
+        return $this->hasOne(ShortlistedCandidate::class);
+    }
+
+    public function notificationRecipient()
+    {
+        return $this->hasOne(NotificationsRecipient::class, 'recipient_id');
+    }
+
+    public function skilltest()
+    {
+        return $this->hasOne(SkillsTest::class);
+    }
+
+    public function skilltestscore()
+    {
+        return $this->hasOne(SkillTestScore::class);
     }
 }

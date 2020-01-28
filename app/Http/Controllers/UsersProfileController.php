@@ -10,12 +10,12 @@ class UsersProfileController extends Controller
     //
     public function showAllUsersProfiles()
     {
-        return response()->json(UsersProfile::all());
+        return response()->json(UsersProfile::with('user', 'skill', 'invites', 'skilltestscore', 'applications', 'certificates', 'recruitment')->get());
     }
 
     public function showOneUsersProfile($id)
     {
-        return response()->json(UsersProfile::find($id));
+        return response()->json(UsersProfile::with('user', 'skill', 'invites', 'skilltestscore', 'applications', 'certificates', 'recruitment')->find($id));
     }
 
     public function create(Request $request)

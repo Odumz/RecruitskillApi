@@ -9,12 +9,12 @@ class OngoingRecruitmentController extends Controller
 {
     public function showAllOngoingRecruitments()
     {
-        return response()->json(OngoingRecruitment::all());
+        return response()->json(OngoingRecruitment::with('recruitment')->get());
     }
 
     public function showOneOngoingRecruitment($id)
     {
-        return response()->json(OngoingRecruitment::find($id));
+        return response()->json(OngoingRecruitment::with('recruitment')->find($id));
     }
 
     public function create(Request $request)

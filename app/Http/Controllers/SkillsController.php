@@ -9,12 +9,12 @@ class SkillsController extends Controller
 {
     public function showAllSkills()
     {
-        return response()->json(Skills::all());
+        return response()->json(Skills::with('jobtitle')->get());
     }
 
     public function showOneSkill($id)
     {
-        return response()->json(Skills::find($id));
+        return response()->json(Skills::with('jobtitle')->find($id));
     }
 
     public function create(Request $request)

@@ -9,12 +9,12 @@ class ApplicationsController extends Controller
 {
     public function showAllApplications()
     {
-        return response()->json(Applications::all());
+        return response()->json(Applications::with('invites', 'user', 'recruitment')->get());
     }
 
     public function showOneApplication($id)
     {
-        return response()->json(Applications::find($id));
+        return response()->json(Applications::with('invites', 'user', 'recruitment')->find($id));
     }
 
     public function create(Request $request)

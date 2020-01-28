@@ -9,12 +9,12 @@ class StateController extends Controller
 {
     public function showAllStates()
     {
-        return response()->json(State::all());
+        return response()->json(State::with('country')->get());
     }
 
     public function showOneState($id)
     {
-        return response()->json(State::find($id));
+        return response()->json(State::with('country')->find($id));
     }
 
     public function create(Request $request)

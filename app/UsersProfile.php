@@ -31,4 +31,34 @@ class UsersProfile extends Model
     {
         return $this->belongsTo(User::class, 'users_id');
     }
+
+    public function skilltestscore()
+    {
+        return $this->belongsTo(SkillTestScore::class, 'skill_test_score_id');
+    }
+
+    public function recruitment()
+    {
+        return $this->belongsTo(Recruitments::class, 'recruitments_id');
+    }
+
+    public function skill()
+    {
+        return $this->belongsTo(Skills::class, 'skills_id');
+    }
+
+    public function invites()
+    {
+        return $this->belongsTo(Invites::class, 'invites_id');
+    }
+
+    public function applications()
+    {
+        return $this->belongsTo(Applications::class, 'applications_id');
+    }
+
+    public function certificates()
+    {
+        return $this->belongsTo(Certificates::class, 'certificates_id');
+    }
 }

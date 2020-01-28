@@ -9,12 +9,12 @@ class SkillsTestController extends Controller
 {
     public function showAllSkillsTests()
     {
-        return response()->json(SkillsTest::all());
+        return response()->json(SkillsTest::with('user', 'skills', 'skilltesttype')->get());
     }
 
     public function showOneSkillsTest($id)
     {
-        return response()->json(SkillsTest::find($id));
+        return response()->json(SkillsTest::with('user', 'skills', 'skilltesttype')->find($id));
     }
 
     public function create(Request $request)

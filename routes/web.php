@@ -12,6 +12,9 @@
 */
 
 use App\Http\Controllers\UsersController;
+// use GuzzleHttp\Middleware;
+
+use Illuminate\Http\Request;
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
@@ -19,7 +22,7 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api/v1'], function($router)
 {
-	//posts
+	//posts    , 'middleware' => 'auth'
 	// $router->group(['prefix' => 'posts', 'middleware'=>'auth'], function($router)
     //     {
     //         $router->post('add','PostsController@createPost');
@@ -88,6 +91,17 @@ $router->group(['prefix' => 'api/v1'], function($router)
         $router->delete('skills_test/{id}', ['uses' => 'SkillsTestController@delete']);
 
         $router->put('skills_test/{id}', ['uses' => 'SkillsTestController@update']);
+
+        // Test Questions
+        $router->get('test_questions',  ['uses' => 'TestQuestionsController@showAllTestQuestions']);
+
+        $router->get('test_questions/{id}', ['uses' => 'TestQuestionsController@showOneTestQuestion']);
+
+        $router->post('test_questions', ['uses' => 'TestQuestionsController@create']);
+
+        $router->delete('test_questions/{id}', ['uses' => 'TestQuestionsController@delete']);
+
+        $router->put('test_questions/{id}', ['uses' => 'TestQuestionsController@update']);
 
         // Skills Test Type
         $router->get('skills_test_type',  ['uses' => 'SkillsTestTypeController@showAllSkillsTestTypes']);

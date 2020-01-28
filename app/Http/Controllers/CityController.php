@@ -9,12 +9,12 @@ class CityController extends Controller
 {
     public function showAllCities()
     {
-        return response()->json(City::all());
+        return response()->json(City::with('state', 'country')->get());
     }
 
     public function showOneCity($id)
     {
-        return response()->json(City::find($id));
+        return response()->json(City::with('state', 'country')->find($id));
     }
 
     public function create(Request $request)

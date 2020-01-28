@@ -17,7 +17,7 @@ class Courses extends Model
     protected $table = 'courses';
 
     protected $fillable = [
-        'users_id', 'courses'
+        'skills_id', 'courses', 'job_title_id'
     ];
 
     /**
@@ -26,4 +26,19 @@ class Courses extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function certificates()
+    {
+        return $this->hasMany(Certificates::class, 'certificates_id');
+    }
+
+    public function skills()
+    {
+        return $this->belongsTo(Skills::class, 'skills_id');
+    }
+
+    public function jobtitle()
+    {
+        return $this->belongsTo(Jobtitle::class, 'jobtitle_id');
+    }
 }

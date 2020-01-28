@@ -31,4 +31,14 @@ class Skills extends Model
     {
         return $this->belongsToMany(JobTitle::class, 'job_title_id');
     }
+
+    public function userprofile()
+    {
+        return $this->hasOne(UsersProfile::class, 'usersprofile_id');
+    }
+
+    public function onboardedcandidate()
+    {
+        return $this->hasMany(OnboardedCandidate::class);
+    }
 }

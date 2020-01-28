@@ -27,5 +27,18 @@ class Recruitments extends Model
      */
     protected $hidden = [];
 
-    
+    public function ongoingrecruitment()
+    {
+        return $this->hasOne(OngoingRecruitment::class, 'recruitment_id');
+    }
+
+    public function concludedrecruitment()
+    {
+        return $this->hasOne(ConcludedRecruitment::class, 'recruitment_id');
+    }
+
+    public function publishedrecruitment()
+    {
+        return $this->hasOne(PublishedRecruitment::class, 'recruitment_id');
+    }
 }

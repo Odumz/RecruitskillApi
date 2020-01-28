@@ -10,12 +10,12 @@ class SkillTestScoreController extends Controller
 {
     public function showAllSkillTestScores()
     {
-        return response()->json(SkillTestScore::all());
+        return response()->json(SkillTestScore::with('user', 'skills', 'skilltest', 'course')->get());
     }
 
     public function showOneSkillTestScore($id)
     {
-        return response()->json(SkillTestScore::find($id));
+        return response()->json(SkillTestScore::with('user', 'skills', 'skilltest', 'course')->find($id));
     }
 
     public function create(Request $request)

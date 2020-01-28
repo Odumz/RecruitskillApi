@@ -9,12 +9,12 @@ class ShortlistedCandidateController extends Controller
 {
     public function showAllShortlistedCandidates()
     {
-        return response()->json(ShortlistedCandidate::all());
+        return response()->json(ShortlistedCandidate::with('user', 'skills', 'recruitment')->get());
     }
 
     public function showOneShortlistedCandidate($id)
     {
-        return response()->json(ShortlistedCandidate::find($id));
+        return response()->json(ShortlistedCandidate::with('user', 'skills', 'recruitment')->find($id));
     }
 
     public function create(Request $request)

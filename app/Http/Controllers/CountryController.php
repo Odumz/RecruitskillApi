@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Country;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -40,9 +41,13 @@ class CountryController extends Controller
 
     public function showAllStatesFromCountry($country_id)
     {
-        $country = Country::find($country_id);
-        $states = $country->states;
-        return response()->json($states, 200);
+        try {
+            $country = Country::find($country_id);
+        } catch(ModelNotFoundException $e) {
+            return response ('Country not found', 404);
+            }
+            $states = $country->states;
+            return response()->json($states, 200);
     }
 
 }

@@ -9,12 +9,12 @@ class CertificatesController extends Controller
 {
     public function showAllCertificates()
     {
-        return response()->json(Certificates::all());
+        return response()->json(Certificates::with('courses', 'skills', 'job_title_id')->get());
     }
 
     public function showOneCertificate($id)
     {
-        return response()->json(Certificates::find($id));
+        return response()->json(Certificates::with('courses', 'skills', 'job_title_id')->find($id));
     }
 
     public function create(Request $request)

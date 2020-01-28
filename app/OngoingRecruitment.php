@@ -26,4 +26,9 @@ class OngoingRecruitment extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function recruitment()
+    {
+        return $this->belongsTo(Recruitments::class, 'recruitments_id');
+    }
 }

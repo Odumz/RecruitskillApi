@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ConcludedRecruitment extends Model
+class TestQuestions extends Model
 {
 
 
@@ -14,10 +14,10 @@ class ConcludedRecruitment extends Model
      * @var array
      */
 
-    protected $table = 'concluded_recruitment';
+    protected $table = 'test_questions';
 
     protected $fillable = [
-        'recruitment_id', 'alias'
+        'questions', 'skills_id'
     ];
 
     /**
@@ -26,9 +26,4 @@ class ConcludedRecruitment extends Model
      * @var array
      */
     protected $hidden = [];
-
-    public function recruitment()
-    {
-        return $this->belongsTo(Recruitments::class, 'recruitments_id');
-    }
 }

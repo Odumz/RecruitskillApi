@@ -26,4 +26,19 @@ class Invites extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function application()
+    {
+        return $this->hasMany(Applications::class);
+    }
+
+    public function userprofile()
+    {
+        return $this->hasOne(UsersProfile::class, 'usersprofile_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'users_id');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Courses;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
@@ -36,5 +37,16 @@ class CoursesController extends Controller
     {
         Courses::findOrFail($id)->delete();
         return response('Deleted Successfully', 200);
+    }
+
+    public function showAllCertificatesFromCourses($courses_id)
+    {
+        try {
+            $courses = Courses::find($courses_id);
+        } catch(ModelNotFoundException $e) {
+            return response ('courses not found', 404);
+            }
+            $certificates = $courses->certificates;
+            return response()->json($certificates, 200);
     }
 }

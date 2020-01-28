@@ -29,9 +29,7 @@ class UsersController extends Controller
 	}
 //view user
     public function view($id){
-        $user  = User::find($id);
-
-
+        $user  = User::with('userprofile')->find($id);
         return response()->json($user);
     }
 //delete user
@@ -44,7 +42,7 @@ class UsersController extends Controller
 //list user
 	public function index(){
 
-    	$user  = User::all();
+    	$user  = User::with('userprofile')->get();
 
     	return response()->json($user);
 

@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\ConcludedRecruitment;
+use App\Recruitments;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class ConcludedRecruitmentController extends Controller
 {
     public function showAllConcludedRecruitments()
     {
-        return response()->json(ConcludedRecruitment::all());
+        return response()->json(ConcludedRecruitment::with('recruitment')->get());
     }
 
     public function showOneConcludedRecruitment($id)
     {
-        return response()->json(ConcludedRecruitment::find($id));
+        return response()->json(ConcludedRecruitment::with('recruitment')->find($id));
     }
 
     public function create(Request $request)

@@ -26,4 +26,14 @@ class Certificates extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function courses()
+    {
+        return $this->belongsTo(Courses::class, 'courses_id');
+    }
+
+    public function userprofile()
+    {
+        return $this->hasOne(UsersProfile::class, 'usersprofile_id');
+    }
 }

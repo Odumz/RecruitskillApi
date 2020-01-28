@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\PublishedRecruitment;
+use App\Recruitments;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class PublishedRecruitmentController extends Controller
 {
     public function showAllPublishedRecruitments()
     {
-        return response()->json(PublishedRecruitment::all());
+        return response()->json(PublishedRecruitment::with('recruitment')->get());
     }
 
     public function showOnePublishedRecruitment($id)
     {
-        return response()->json(PublishedRecruitment::find($id));
+        return response()->json(PublishedRecruitment::with('recruitment')->find($id));
     }
 
     public function create(Request $request)
@@ -37,4 +39,5 @@ class PublishedRecruitmentController extends Controller
         PublishedRecruitment::findOrFail($id)->delete();
         return response('Deleted Successfully', 200);
     }
+
 }

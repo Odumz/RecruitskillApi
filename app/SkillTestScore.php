@@ -26,4 +26,24 @@ class SkillTestScore extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function user()
+    {
+        $this->belongsTo(User::class, 'users_id');
+    }
+
+    public function skills()
+    {
+        $this->belongsTo(Skills::class, 'skills_id');
+    }
+
+    public function skilltest()
+    {
+        $this->belongsTo(Skillstest::class, 'skill_test_id');
+    }
+
+    public function course()
+    {
+        $this->belongsTo(User::class, 'courses_id');
+    }
 }
