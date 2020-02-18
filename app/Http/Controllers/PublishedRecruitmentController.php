@@ -6,6 +6,7 @@ use App\PublishedRecruitment;
 use App\Recruitments;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PublishedRecruitmentController extends Controller
 {

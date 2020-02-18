@@ -15,10 +15,13 @@ class CreateJobDescriptionTable extends Migration
     {
         Schema::create('job_description', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('job_title_id')->unsigned();
             $table->text('job_description');
             $table->timestamps();
+            $table->bigInteger('job_title_id')->unsigned();
+            $table->foreign('job_title_id')->references('id')->on('job_title');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

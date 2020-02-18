@@ -15,11 +15,15 @@ class CreateCityTable extends Migration
     {
         Schema::create('city', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('city');
             $table->bigInteger('country_id')->unsigned();
             $table->bigInteger('state_id')->unsigned();
-            $table->string('city');
+            $table->foreign('country_id')->references('id')->on('country')->onDelete('cascade');
+            $table->foreign('state_id')->references('id')->on('state')->onDelete('cascade');
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

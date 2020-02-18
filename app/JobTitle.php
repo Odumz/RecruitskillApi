@@ -36,4 +36,9 @@ class JobTitle extends Model
     {
         return $this->hasMany(Skills::class);
     }
+
+    public function jobDescription()
+    {
+        return $this->hasMany(JobDescription::class);
+    }
 }

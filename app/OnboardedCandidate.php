@@ -17,7 +17,7 @@ class OnboardedCandidate extends Model
     protected $table = 'onboarded_candidate';
 
     protected $fillable = [
-        'recruitment_id', 'user_id', 'skill_id'
+        'recruitments_id', 'users_id', 'skills_id'
     ];
 
     /**
@@ -29,16 +29,16 @@ class OnboardedCandidate extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'users_id');
     }
 
     public function skills()
     {
-        return $this->belongsTo(Skills::class, 'skill_id');
+        return $this->belongsTo(Skills::class, 'skills_id');
     }
 
     public function recruitment()
     {
-        return $this->belongsTo(Recruitments::class, 'recruitment_id');
+        return $this->belongsTo(Recruitments::class, 'recruitments_id');
     }
 }

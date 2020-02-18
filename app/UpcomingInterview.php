@@ -26,4 +26,14 @@ class UpcomingInterview extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'users_id');
+    }
+
+    public function recruitment()
+    {
+        return $this->belongsTo(Recruitments::class, 'recruitments_id');
+    }
 }

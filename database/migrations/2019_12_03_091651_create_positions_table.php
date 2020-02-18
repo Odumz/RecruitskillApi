@@ -15,8 +15,10 @@ class CreatePositionsTable extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('industry_id')->unsigned();
             $table->string('positions');
             $table->timestamps();
+            $table->foreign('industry_id')->references('id')->on('industry');
         });
     }
 

@@ -41,4 +41,14 @@ class Invites extends Model
     {
         return $this->belongsTo(User::class, 'users_id');
     }
+
+    public function recruitment()
+    {
+        return $this->belongsTo(Recruitments::class, 'recruitments_id');
+    }
+
+    public function invites()
+    {
+        return $this->belongsTo(Invites::class, 'invites_id');
+    }
 }

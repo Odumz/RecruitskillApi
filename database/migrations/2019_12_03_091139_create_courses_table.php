@@ -18,8 +18,12 @@ class CreateCoursesTable extends Migration
             $table->bigInteger('skills_id')->unsigned();
             $table->bigInteger('job_title_id')->unsigned();
             $table->string('courses');
+            $table->foreign('skills_id')->references('id')->on('skills')->onDelete('cascade');
+            $table->foreign('job_title_id')->references('id')->on('job_title')->onDelete('cascade');
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

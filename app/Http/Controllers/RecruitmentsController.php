@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\OngoingRecruitment;
+use App\PublishedRecruitment;
 use App\Recruitments;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -11,18 +13,22 @@ class RecruitmentsController extends Controller
 {
     public function showAllRecruitments()
     {
-        return response()->json(Recruitments::all());
+        return response()->json(Recruitments::with('user')->get());
     }
 
     public function showOneRecruitment($id)
     {
-        return response()->json(Recruitments::find($id));
+        return response()->json(Recruitments::with('user')->find($id));
     }
 
     public function create(Request $request)
     {
-        Log::info('Showing user profile for user: '.$request);
+        // Log::info('Showing user profile for user: '.$request);
         $recruitments = Recruitments::create($request->all());
+
+        $recruitment_id = $recruitments->id();
+        // $publishedRecruitment = PublishedRecruitment::create();
+        // $ongoingRecruitment = OngoingRecruitment::create();
 
         return response()->json($recruitments, 201);
     }
@@ -73,4 +79,20 @@ class RecruitmentsController extends Controller
             $ongoingRecruitment = $recruitment->ongoingRecruitment;
             return response()->json($ongoingRecruitment, 200);
     }
+
+
+    public function showUserPublishedRecruitment(Request $request, $users_id)
+    {
+        $recruitment = Recruitments::find($users_id);
+        $publishedrecruitment = PublishedRecruitment::whereIn('users_id', $users_id);
+        // $publishedrecruitment = $recruitment-> ;
+        return response()->json($publishedrecruitment, 200);
+    }
+
+    // public function showAllCitiesFromState($state_id)
+    // {
+    //     $state = State::find($state_id);
+    //     $cities = $state->cities;
+    //     return response()->json($cities, 200);
+    // }
 }

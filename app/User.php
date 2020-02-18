@@ -21,7 +21,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     protected $table = 'users';
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password', 'role',
     ];
 
     /**
@@ -41,6 +41,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function invite()
     {
         return $this->hasMany(Invites::class);
+    }
+
+    public function recruitments()
+    {
+        return $this->hasMany(Recruitments::class);
     }
 
     public function notification()

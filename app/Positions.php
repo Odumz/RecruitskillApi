@@ -17,7 +17,7 @@ class Positions extends Model
     protected $table = 'positions';
 
     protected $fillable = [
-        'positions'
+        'industry_id', 'positions'
     ];
 
     /**
@@ -26,4 +26,9 @@ class Positions extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function industry()
+    {
+        return $this->belongsTo(Industry::class);
+    }
 }

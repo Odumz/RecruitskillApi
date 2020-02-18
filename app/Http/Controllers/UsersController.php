@@ -14,9 +14,15 @@ class UsersController extends Controller
 
         $request['api_token'] = Str::random(60);
         $request['password'] = app('hash')->make($request['password']);
-    	$user = User::create($request->all());
+        $user = User::create($request->all());
 
-    	return response()->json($user);
+        $accessToken['accessToken'] = $user->createToken('authToken')->accessToken;
+        $accessToken['name'] = $user->first_name;
+
+        // return response(['accessToken' => $accessToken, 'message' => 'Account created successfully']);
+        return response()->json(['user' => $user, 'access_token' => $accessToken]);
+
+    	// return response()->json($user);
 
 	}
 

@@ -15,10 +15,12 @@ class CreateSkillsTable extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('job_title_id')->unsigned();
             $table->string('skills');
             $table->timestamps();
+            $table->bigInteger('job_title_id')->unsigned();
+            $table->foreign('job_title_id')->references('id')->on('job_title');
         });
+
         Schema::enableForeignKeyConstraints();
     }
 

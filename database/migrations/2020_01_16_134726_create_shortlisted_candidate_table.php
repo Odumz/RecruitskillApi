@@ -15,11 +15,16 @@ class CreateShortlistedCandidateTable extends Migration
     {
         Schema::create('shortlisted_candidate', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('recruitment_id')->unsigned();
-            $table->bigInteger('skill_id')->unsigned();
+            $table->bigInteger('users_id')->unsigned();
+            $table->bigInteger('recruitments_id')->unsigned();
+            $table->bigInteger('skills_id')->unsigned();
             $table->timestamps();
+            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('recruitments_id')->references('id')->on('recruitments');
+            $table->foreign('skills_id')->references('id')->on('skills');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

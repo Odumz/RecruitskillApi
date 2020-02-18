@@ -15,12 +15,17 @@ class CreateSkillsTestTable extends Migration
     {
         Schema::create('skills_test', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('skill_test_questions');
+            $table->timestamps();
             $table->bigInteger('users_id')->unsigned();
             $table->bigInteger('skills_id')->unsigned()->nullable();
             $table->bigInteger('skills_test_type_id')->unsigned()->nullable();
-            $table->string('skill_test_questions');
-            $table->timestamps();
+            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('skills_id')->references('id')->on('skills');
+            $table->foreign('skill_test_type_id')->references('id')->on('skill_test_type');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

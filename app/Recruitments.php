@@ -17,7 +17,7 @@ class Recruitments extends Model
     protected $table = 'recruitments';
 
     protected $fillable = [
-        'users_id', 'job_title', 'job_description', 'duration', 'countries', 'required_skills', 'required_experience', 'job_category', 'cities', 'states', 'responsibilities', 'postion', 'renumeration'
+        'users_id', 'job_title', 'job_description', 'duration', 'country', 'required_skills', 'required_experience', 'city', 'state', 'responsibilities', 'postion', 'renumeration', 'alias', 'status', 'data_type', 'isPublished', 'job_type',
     ];
 
     /**
@@ -27,18 +27,23 @@ class Recruitments extends Model
      */
     protected $hidden = [];
 
-    public function ongoingrecruitment()
-    {
-        return $this->hasOne(OngoingRecruitment::class, 'recruitment_id');
-    }
+    // public function ongoingrecruitment()
+    // {
+    //     return $this->hasOne(OngoingRecruitment::class, 'recruitment_id');
+    // }
 
-    public function concludedrecruitment()
-    {
-        return $this->hasOne(ConcludedRecruitment::class, 'recruitment_id');
-    }
+    // public function concludedrecruitment()
+    // {
+    //     return $this->hasOne(ConcludedRecruitment::class, 'recruitment_id');
+    // }
 
-    public function publishedrecruitment()
+    // public function publishedrecruitment()
+    // {
+    //     return $this->hasOne(PublishedRecruitment::class, 'recruitment_id');
+    // }
+
+    public function user()
     {
-        return $this->hasOne(PublishedRecruitment::class, 'recruitment_id');
+        return $this->belongsTo(User::class, 'users_id');
     }
 }

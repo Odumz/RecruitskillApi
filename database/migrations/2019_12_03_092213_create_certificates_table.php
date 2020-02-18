@@ -17,8 +17,11 @@ class CreateCertificatesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('courses_id')->unsigned();
             $table->string('certificates');
+            $table->foreign('courses_id')->references('id')->on('courses');
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

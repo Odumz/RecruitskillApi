@@ -19,7 +19,10 @@ class CreateNotificationsTable extends Migration
             $table->string('notifications_title');
             $table->mediumText('notifications_content');
             $table->timestamps();
+            $table->foreign('creators_id')->references('id')->on('users');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

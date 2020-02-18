@@ -26,4 +26,9 @@ class SkillsTestType extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function skills()
+    {
+        return $this->belongsTo(Skills::class);
+    }
 }

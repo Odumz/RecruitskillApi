@@ -20,7 +20,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api/v1'], function($router)
+$router->group(['prefix' => 'api'], function($router)
 {
 	//posts    , 'middleware' => 'auth'
 	// $router->group(['prefix' => 'posts', 'middleware'=>'auth'], function($router)
@@ -307,6 +307,8 @@ $router->group(['prefix' => 'api/v1'], function($router)
 
         // PublishedRecruitment
         $router->get('published-recruitment',  ['uses' => 'PublishedRecruitmentController@showAllPublishedRecruitments']);
+
+        $router->get('user-published-recruitment/{id}',  ['uses' => 'PublishedRecruitmentController@showUserPublishedRecruitment']);
 
         $router->get('published-recruitment/{id}', ['uses' => 'PublishedRecruitmentController@showOnePublishedRecruitment']);
 

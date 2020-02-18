@@ -6,6 +6,7 @@ use App\User;
 use Dusterio\LumenPassport\LumenPassport;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -32,15 +33,16 @@ class AuthServiceProvider extends ServiceProvider
         // the User instance via an API token or any other method necessary.
 
         LumenPassport::allowMultipleTokens();
+        // Passport::routes();
 
         // \Dusterio\LumenPassport\LumenPassport::routes($this->app, ['prefix' => 'v1/oauth']);
 
         $this->app['auth']->viaRequest('api', function ($request) {
-            if($request->header('api_token')) {
-                $api_token = $request->header('api_token');
-            } else {
-                $api_token = $request->input('api_token');
-            }
+            // if($request->header('api_token')) {
+            //     $api_token = $request->header('api_token');
+            // } else {
+            //     $api_token = $request->input('api_token');
+            // }
 
             if ($request->input('api_token')) {
                 return User::where('api_token', $request->input('api_token'))->first();

@@ -26,4 +26,9 @@ class JobDescription extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function jobTitle()
+    {
+        return $this->belongsTo(JobTitle::class, 'job_title_id');
+    }
 }

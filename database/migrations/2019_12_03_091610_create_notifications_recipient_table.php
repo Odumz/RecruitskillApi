@@ -18,7 +18,11 @@ class CreateNotificationsRecipientTable extends Migration
             $table->bigInteger('recipient_id');
             $table->bigInteger('notifications_id');
             $table->timestamps();
+            $table->foreign('recipient_id')->references('id')->on('users');
+            $table->foreign('notifications_id')->references('id')->on('notifications');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

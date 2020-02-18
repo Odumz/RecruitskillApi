@@ -15,14 +15,20 @@ class CreateSkillTestScoreTable extends Migration
     {
         Schema::create('skill_test_score', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('skill_level', ['basic', 'intermediate', 'advanced']);
+            $table->integer('test_score');
+            $table->timestamps();
             $table->bigInteger('users_id');
             $table->bigInteger('skills_id');
             $table->bigInteger('skill_test_id');
             $table->bigInteger('courses_id')->nullable();
-            $table->enum('skill_level', ['basic', 'intermediate', 'advanced']);
-            $table->integer('test_score');
-            $table->timestamps();
+            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('skills_id')->references('id')->on('skills');
+            $table->foreign('skills_test_id')->references('id')->on('skills_test');
+            $table->foreign('courses_id')->references('id')->on('courses');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

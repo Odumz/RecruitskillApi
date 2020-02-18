@@ -41,4 +41,9 @@ class Skills extends Model
     {
         return $this->hasMany(OnboardedCandidate::class);
     }
+
+    public function shortlistedcandidate()
+    {
+        return $this->hasMany(ShortlistedCandidate::class);
+    }
 }

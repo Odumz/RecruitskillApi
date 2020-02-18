@@ -15,10 +15,13 @@ class CreateConcludedRecruitmentTable extends Migration
     {
         Schema::create('concluded_recruitment', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('recruitment_id')->unsigned();
+            $table->bigInteger('recruitments_id')->unsigned();
             $table->string('alias');
+            $table->foreign('recruitments_id')->references('id')->on('recruitments');
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

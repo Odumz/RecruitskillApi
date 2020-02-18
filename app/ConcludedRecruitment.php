@@ -17,7 +17,7 @@ class ConcludedRecruitment extends Model
     protected $table = 'concluded_recruitment';
 
     protected $fillable = [
-        'recruitment_id', 'alias'
+        'recruitments_id', 'alias'
     ];
 
     /**

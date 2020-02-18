@@ -15,22 +15,28 @@ class CreateRecruitmentsTable extends Migration
     {
         Schema::create('recruitments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('users_id')->unsigned();
             $table->string('job_title');
             $table->mediumText('job_description');
-            $table->string('duration');
+            $table->string('alias');
+            $table->enum('status', ['ongoing', 'concluded']);
+            $table->enum('job_type', ['full time', 'part time', 'contract', 'IT', 'internship']);
+            $table->boolean('isPublished');
+            $table->date('duration');
             $table->string('required_experience');
             $table->mediumText('required_skills');
             $table->string('country');
             $table->string('state');
             $table->string('city');
             $table->string('responsibilities');
-            $table->string('position');
-            $table->string('renumeration');
-            $table->string('job_category');
-            $table->string('data_type');
+            $table->enum('position', ['entry level', 'beginner' , 'intermediate', 'advanced']);
+            $table->tinyInteger('renumeration');
+            $table->enum('data_type', ['user', 'system']);
             $table->timestamps();
+            $table->bigInteger('users_id')->unsigned();
+            $table->foreign('users_id')->references('id')->on('users');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

@@ -15,11 +15,15 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('users_id')->unsigned();
-            $table->bigInteger('recruitments_id')->unsigned();
             $table->bigInteger('invites_id')->unsigned()->nullable();
             $table->timestamps();
+            $table->bigInteger('users_id')->unsigned();
+            $table->bigInteger('recruitments_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('recruitments_id')->references('id')->on('recruitments');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

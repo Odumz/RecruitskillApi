@@ -17,8 +17,11 @@ class CreateTestQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('skills_id')->unique();
             $table->string('questions');
+            $table->foreign('skills_id')->references('id')->on('skills');
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

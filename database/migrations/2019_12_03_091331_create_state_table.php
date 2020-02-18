@@ -18,7 +18,10 @@ class CreateStateTable extends Migration
             $table->bigInteger('country_id')->unsigned();
             $table->string('state');
             $table->timestamps();
+            $table->foreign('country_id')->references('id')->on('country')->onDelete('cascade');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
