@@ -31,9 +31,11 @@ class CreateRecruitmentsTable extends Migration
             $table->enum('position', ['entry level', 'beginner' , 'intermediate', 'advanced']);
             $table->tinyInteger('renumeration');
             $table->enum('data_type', ['user', 'system']);
+            $table->enum('gender', ['any', 'male', 'female']);
             $table->timestamps();
             $table->bigInteger('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
+
         });
 
         Schema::enableForeignKeyConstraints();

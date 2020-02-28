@@ -26,9 +26,11 @@ class RecruitmentsController extends Controller
         // Log::info('Showing user profile for user: '.$request);
         $recruitments = Recruitments::create($request->all());
 
-        $recruitment_id = $recruitments->id();
+        // $recruitment_id = $recruitments->id();
         // $publishedRecruitment = PublishedRecruitment::create();
         // $ongoingRecruitment = OngoingRecruitment::create();
+
+        // dd($recruitments);
 
         return response()->json($recruitments, 201);
     }

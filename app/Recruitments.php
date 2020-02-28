@@ -17,7 +17,7 @@ class Recruitments extends Model
     protected $table = 'recruitments';
 
     protected $fillable = [
-        'users_id', 'job_title', 'job_description', 'duration', 'country', 'required_skills', 'required_experience', 'city', 'state', 'responsibilities', 'postion', 'renumeration', 'alias', 'status', 'data_type', 'isPublished', 'job_type',
+        'users_id', 'job_title', 'job_description', 'duration', 'country', 'required_skills', 'required_experience', 'city', 'state', 'gender', 'responsibilities', 'position', 'renumeration', 'data_type', 'alias', 'status', 'isPublished', 'job_type',
     ];
 
     /**
